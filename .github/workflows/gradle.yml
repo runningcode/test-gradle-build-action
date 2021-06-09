@@ -9,10 +9,9 @@ jobs:
     - uses: actions/setup-java@v1
       with:
         java-version: 11
-    - uses: bigdaz/gradle-command-action@v1
+    - uses: bigdaz/gradle-command-action@v1.2
       with:
         build-root-directory: gradle-project
-        wrapper-directory: gradle-project
         arguments: build
       id: gradle
     - name: "Print build scan url"
