@@ -12,3 +12,6 @@ jobs:
     - uses: eskatos/gradle-command-action@v1
       with:
         arguments: build
+      id: gradle
+    - name: "Print build scan url"
+      run: echo "${{ steps.gradle.outputs.build-scan-url }}"
