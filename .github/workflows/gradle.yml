@@ -14,4 +14,4 @@ jobs:
         arguments: build
       id: gradle
     - name: "Print build scan url"
-      run: echo "${{ steps.gradle.outputs.build-scan-url }}"
+      run: echo "Build Scan: ${{ steps.gradle.outputs.build-scan-url }}"
