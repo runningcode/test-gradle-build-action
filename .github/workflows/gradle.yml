@@ -9,7 +9,7 @@ jobs:
     - uses: actions/setup-java@v1
       with:
         java-version: 11
-    - uses: bigdaz/gradle-command-action@master
+    - uses: bigdaz/gradle-command-action@improvements
       with:
         build-root-directory: gradle-project
         arguments: build
