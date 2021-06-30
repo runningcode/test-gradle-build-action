@@ -10,6 +10,8 @@ jobs:
       with:
         distribution: 'adopt'
         java-version: 11
+    - name: Print built-in Gradle version
+      run: gradle --version
     - uses: eskatos/gradle-command-action@dd/experiments
       with:
         gradle-version: 7.1
