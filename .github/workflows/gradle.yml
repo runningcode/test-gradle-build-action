@@ -16,9 +16,13 @@ jobs:
       run: which gradle
     - uses: eskatos/gradle-command-action@dd/experiments
       with:
-        gradle-version: 7.1
+        gradle-version: 6.9
         build-root-directory: gradle-project
         arguments: help
       id: gradle
-    - name: "Print build scan url"
-      run: echo "Build Scan ${{ steps.gradle.outputs.build-scan-url }}"
+    - uses: eskatos/gradle-command-action@dd/experiments
+      with:
+        gradle-version: 6.9
+        build-root-directory: gradle-project
+        arguments: help
+      id: gradle2
