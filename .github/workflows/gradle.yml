@@ -9,9 +9,9 @@ jobs:
     - uses: actions/setup-java@v1
       with:
         java-version: 11
-    - uses: eskatos/gradle-command-action@dd/improvements
+    - uses: eskatos/gradle-command-action@dd/experiments
       with:
-        gradle-version: 6.9
+        gradle-version: 7.1
         build-root-directory: gradle-project
         arguments: help
       id: gradle
