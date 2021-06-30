@@ -12,6 +12,8 @@ jobs:
         java-version: 11
     - name: Print built-in Gradle version
       run: gradle --version
+    - name: Print built-in Gradle path
+      run: which gradle
     - uses: eskatos/gradle-command-action@dd/experiments
       with:
         gradle-version: 7.1
