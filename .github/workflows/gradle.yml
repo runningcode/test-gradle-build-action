@@ -18,11 +18,11 @@ jobs:
       with:
         gradle-version: 6.9
         build-root-directory: gradle-project
-        arguments: help
+        arguments: help --debug
       id: gradle
     - uses: eskatos/gradle-command-action@dd/experiments
       with:
         gradle-version: 6.9
         build-root-directory: gradle-project
-        arguments: help
+        arguments: help --debug
       id: gradle2
