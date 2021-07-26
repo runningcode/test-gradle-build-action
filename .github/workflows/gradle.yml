@@ -10,19 +10,17 @@ jobs:
       with:
         distribution: 'adopt'
         java-version: 11
-    - name: Print built-in Gradle version
-      run: gradle --version
-    - name: Print built-in Gradle path
-      run: which gradle
-    - uses: eskatos/gradle-command-action@dd/experiments
+    - uses: eskatos/gradle-command-action@dd/v1-improved
       with:
         gradle-version: 6.9
         build-root-directory: gradle-project
         arguments: help --debug
+        dependencies-cache-enabled: true
       id: gradle
-    - uses: eskatos/gradle-command-action@dd/experiments
+    - uses: eskatos/gradle-command-action@dd/v1-improved
       with:
         gradle-version: 6.9
         build-root-directory: gradle-project
         arguments: help --debug
+        dependencies-cache-enabled: true
       id: gradle2
