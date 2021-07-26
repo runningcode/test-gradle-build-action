@@ -14,13 +14,13 @@ jobs:
       with:
         gradle-version: 6.9
         build-root-directory: gradle-project
-        arguments: help --debug
+        arguments: help
         dependencies-cache-enabled: true
       id: gradle
     - uses: eskatos/gradle-command-action@dd/v1-improved
       with:
         gradle-version: 6.9
         build-root-directory: gradle-project
-        arguments: help --debug
+        arguments: help
         dependencies-cache-enabled: true
       id: gradle2
