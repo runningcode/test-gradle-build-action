@@ -21,6 +21,6 @@ jobs:
       with:
         gradle-version: 6.9
         build-root-directory: gradle-project
-        arguments: help
+        arguments: check
         dependencies-cache-enabled: true
       id: gradle2
