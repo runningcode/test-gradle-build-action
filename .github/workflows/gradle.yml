@@ -15,13 +15,6 @@ jobs:
         build-root-directory: gradle-project
         arguments: help
         dependencies-cache-enabled: true
-      id: gradle
-    - uses: eskatos/gradle-command-action@dd/experiments
-      with:
-        build-root-directory: gradle-project
-        arguments: check
-        dependencies-cache-enabled: true
-      id: gradle2
       
   second-workflow:
     runs-on: ubuntu-latest
