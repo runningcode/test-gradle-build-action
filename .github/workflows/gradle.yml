@@ -14,5 +14,5 @@ jobs:
       with:
         build-root-directory: gradle-project
         arguments: help
-        dependencies-cache-enabled: true
+        configuration-cache-enabled: true
 
