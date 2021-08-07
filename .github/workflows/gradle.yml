@@ -10,22 +10,9 @@ jobs:
       with:
         distribution: 'adopt'
         java-version: 11
-    - uses: eskatos/gradle-command-action@dd/experiments
+    - uses: gradle/gradle-build-action@v1
       with:
         build-root-directory: gradle-project
         arguments: help
         dependencies-cache-enabled: true
-      
-  second-workflow:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-java@v2
-      with:
-        distribution: 'adopt'
-        java-version: 11
-    - uses: eskatos/gradle-command-action@dd/experiments
-      with:
-        build-root-directory: gradle-project
-        arguments: check
-        dependencies-cache-enabled: true
+
