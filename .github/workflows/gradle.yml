@@ -10,7 +10,7 @@ jobs:
       with:
         distribution: 'adopt'
         java-version: 11
-    - uses: bigdaz/gradle-build-action@v1
+    - uses: bigdaz/gradle-build-action@7336529ec5eeb9568f45a8e0a4e6ce48d59a37ae
       with:
         build-root-directory: gradle-project
         arguments: help
