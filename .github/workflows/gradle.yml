@@ -10,11 +10,9 @@ jobs:
       with:
         distribution: 'adopt'
         java-version: 11
-    - uses: bigdaz/gradle-build-action/setup-gradle@master
-      with:
-        gradle-version: '4.4'
-    - uses: bigdaz/gradle-build-action@v1
+    - uses: gradle/gradle-build-action@releases/v1
       with:
         build-root-directory: gradle-project
         arguments: help
+        configuration-cache-enabled: true
 
