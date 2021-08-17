@@ -13,5 +13,6 @@ jobs:
     - uses: gradle/gradle-build-action@v1.3.3
       with:
         build-root-directory: gradle-project
+        wrapper-directory: gradle-project
         arguments: help
 
