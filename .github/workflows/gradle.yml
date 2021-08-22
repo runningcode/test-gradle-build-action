@@ -10,7 +10,7 @@ jobs:
       with:
         distribution: 'adopt'
         java-version: 11
-    - uses: gradle/gradle-build-action@v1.3.3
+    - uses: gradle/gradle-build-action@releases/v1
       with:
         build-root-directory: gradle-project
         wrapper-directory: gradle-project
