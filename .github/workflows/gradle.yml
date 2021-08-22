@@ -1,6 +1,8 @@
 # .github/workflows/gradle-build-pr.yml
 name: Run Gradle on push
-on: push
+on:
+  push:
+  workflow_dispatch:
 jobs:
   gradle:
     runs-on: ubuntu-latest
