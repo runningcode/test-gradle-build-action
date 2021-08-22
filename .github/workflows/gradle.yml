@@ -16,5 +16,23 @@ jobs:
       with:
         build-root-directory: gradle-project
         wrapper-directory: gradle-project
-        arguments: help
+        arguments: build --build-cache
+        dependencies-cache-enabled: true
+        
+  read-only:
+    needs: gradle
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-java@v2
+      with:
+        distribution: 'adopt'
+        java-version: 11
+    - uses: gradle/gradle-build-action@releases/v1
+      with:
+        build-root-directory: gradle-project
+        wrapper-directory: gradle-project
+        arguments: build --build-cache
+        cache-read-only: true
+        dependencies-cache-enabled: true
 
