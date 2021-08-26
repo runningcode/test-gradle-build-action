@@ -1,5 +1,4 @@
-# .github/workflows/gradle-build-pr.yml
-name: Run Gradle on push
+name: main
 on:
   push:
   workflow_dispatch:
