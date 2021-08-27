@@ -14,7 +14,6 @@ jobs:
     - uses: gradle/gradle-build-action@releases/v2
       with:
         build-root-directory: gradle-project
-        wrapper-directory: gradle-project
         arguments: build --build-cache
         
   read-only:
@@ -29,7 +28,6 @@ jobs:
     - uses: gradle/gradle-build-action@releases/v2
       with:
         build-root-directory: gradle-project
-        wrapper-directory: gradle-project
         arguments: build --build-cache
         gradle-user-home-cache-enabled: read-only
         project-dot-gradle-cache-enabled: read-only
