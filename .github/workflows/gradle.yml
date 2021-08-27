@@ -11,12 +11,11 @@ jobs:
       with:
         distribution: 'adopt'
         java-version: 11
-    - uses: gradle/gradle-build-action@releases/v1
+    - uses: gradle/gradle-build-action@releases/v2
       with:
         build-root-directory: gradle-project
         wrapper-directory: gradle-project
         arguments: build --build-cache
-        dependencies-cache-enabled: true
         
   read-only:
     needs: gradle
@@ -27,20 +26,12 @@ jobs:
       with:
         distribution: 'adopt'
         java-version: 11
-    - uses: gradle/gradle-build-action@releases/v1
+    - uses: gradle/gradle-build-action@releases/v2
       with:
         build-root-directory: gradle-project
         wrapper-directory: gradle-project
         arguments: build --build-cache
-        cache-read-only: true
-        dependencies-cache-enabled: true
-        
-  check-expression:
-    runs-on: ubuntu-latest
+        gradle-user-home-cache-enabled: read-only
+        project-dot-gradle-cache-enabled: read-only
 
-    steps:
-    - name: Check use of github context
-      run: echo ${{github.workflow}}_${{github.run_number}}
-    - name: Check another
-      run: echo ${{github.run_id}}
 
