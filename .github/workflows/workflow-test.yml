@@ -11,6 +11,8 @@ jobs:
         os: [ ubuntu-latest, macos-latest ]
     runs-on: ${{ matrix.os }}
     steps:
+      - name: Dump job id and name
+        run: echo "${{job.id}} - ${{job.name}}"
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
