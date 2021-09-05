@@ -12,7 +12,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - name: Dump job id and name
-        run: echo "${{job.id}} - ${{job.name}}"
+        run: echo "$GITHUB_JOB - $GITHUB_EVENT_PATH"
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
