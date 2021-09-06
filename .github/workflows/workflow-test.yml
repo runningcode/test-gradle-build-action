@@ -12,12 +12,7 @@ jobs:
       - name: Dump job id and name
         run: echo "$GITHUB_JOB - $GITHUB_EVENT_PATH"
       - name: Read EVENT_PATH
-        id: foo
-        uses: juliangruber/read-file-action@v1
-        with:
-          path: ${{env.GITHUB_EVENT_PATH}}
-      - name: Echo package.json
-        run: echo "${{ steps.foo.outputs.content }}"
+        run: cat $GITHUB_EVENT_PATH
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
