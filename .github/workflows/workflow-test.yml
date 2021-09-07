@@ -2,39 +2,20 @@ name: workflow-test
 on:
   workflow_dispatch:
 jobs:
-  work:
-    strategy:
-      matrix:
-        java: [ 11, 12 ]
-        os: [ ubuntu-latest, macos-latest ]
-    runs-on: ${{ matrix.os }}
+  job1:
+    runs-on: ubuntu-latest
     steps:
-      - name: Dump job id and name
-        run: echo "$GITHUB_JOB - $GITHUB_EVENT_PATH"
-      - name: Read EVENT_PATH
-        run: cat $GITHUB_EVENT_PATH
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJSON(github) }}
-        run: echo "$GITHUB_CONTEXT"
-      - name: Dump job context
-        env:
-          JOB_CONTEXT: ${{ toJSON(job) }}
-        run: echo "$JOB_CONTEXT"
-      - name: Dump steps context
-        env:
-          STEPS_CONTEXT: ${{ toJSON(steps) }}
-        run: echo "$STEPS_CONTEXT"
-      - name: Dump runner context
-        env:
-          RUNNER_CONTEXT: ${{ toJSON(runner) }}
-        run: echo "$RUNNER_CONTEXT"
-      - name: Dump strategy context
-        env:
-          STRATEGY_CONTEXT: ${{ toJSON(strategy) }}
-        run: echo "$STRATEGY_CONTEXT"
-      - name: Dump matrix context
-        env:
-          MATRIX_CONTEXT: ${{ toJSON(matrix) }}
-        run: echo "$MATRIX_CONTEXT"
-
+      - name: Do the cache
+        uses: actions/cache@v2
+        with:
+          path: output-dir
+          key: the-cache
+      - name: Append to the file
+        uses: DamianReeves/write-file-action@v1.0
+        with:
+          path: output-dir/file.txt
+          contents: | 
+              ${{github.run_number}}
+          write-mode: append
+      - name: Echo file contents
+        run: cat output-dir/file.txt
