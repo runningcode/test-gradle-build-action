@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Do the cache
-        uses: bigdaz/cache@bf7b0d66e66bc89d377e52ac35121dce924075a1
+        uses: bigdaz/cache@e35dcef84bcc8d0657b0dbed0df4333bd825831b
         with:
           path: output-dir
           key: the-cache
