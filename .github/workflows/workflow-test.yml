@@ -19,3 +19,21 @@ jobs:
           write-mode: append
       - name: Echo file contents
         run: cat output-dir/file.txt
+  job2:
+    needs: job1
+    runs-on: ubuntu-latest
+    steps:
+      - name: Do the cache
+        uses: bigdaz/cache@e35dcef84bcc8d0657b0dbed0df4333bd825831b
+        with:
+          path: output-dir
+          key: the-cache
+      - name: Append to the file
+        uses: DamianReeves/write-file-action@v1.0
+        with:
+          path: output-dir/file.txt
+          contents: | 
+              ${{github.run_number}}
+          write-mode: append
+      - name: Echo file contents
+        run: cat output-dir/file.txt
