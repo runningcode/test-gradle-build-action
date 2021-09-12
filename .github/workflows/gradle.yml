@@ -14,6 +14,7 @@ jobs:
       with:
         build-root-directory: gradle-project
         arguments: build --build-cache
+        cache-debugging-enabled: true
         
   read-only:
     needs: gradle
@@ -29,5 +30,6 @@ jobs:
         build-root-directory: gradle-project
         arguments: build --build-cache
         gradle-cache-enabled: read-only
+        cache-debugging-enabled: true
 
 
