@@ -10,7 +10,7 @@ jobs:
       with:
         distribution: 'adopt'
         java-version: 11
-    - uses: gradle/gradle-build-action@releases/v2
+    - uses: gradle/gradle-build-action@dd/v2
       with:
         build-root-directory: gradle-project
         arguments: build --build-cache
@@ -24,7 +24,7 @@ jobs:
       with:
         distribution: 'adopt'
         java-version: 11
-    - uses: gradle/gradle-build-action@releases/v2
+    - uses: gradle/gradle-build-action@dd/v2
       with:
         build-root-directory: gradle-project
         arguments: build --build-cache
