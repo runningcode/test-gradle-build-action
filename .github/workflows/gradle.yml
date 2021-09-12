@@ -28,7 +28,6 @@ jobs:
       with:
         build-root-directory: gradle-project
         arguments: build --build-cache
-        gradle-user-home-cache-enabled: read-only
-        project-dot-gradle-cache-enabled: read-only
+        gradle-cache-enabled: read-only
 
 
