@@ -12,6 +12,7 @@ jobs:
         java-version: 11
     - uses: gradle/gradle-build-action@dd/v2
       with:
+        gradle-version: 6.8.2
         build-root-directory: gradle-project
         arguments: build --build-cache
         cache-debugging-enabled: true
