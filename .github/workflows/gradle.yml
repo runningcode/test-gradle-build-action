@@ -4,6 +4,7 @@ on:
   workflow_dispatch:
 
 env:
+  CACHE_KEY_PREFIX: ${{github.workflow}}#${{github.run_number}}-
   CACHE_DEBUG_ENABLED: true
 
 jobs:
@@ -23,8 +24,7 @@ jobs:
           [
             ["generated-gradle-jars", "caches/*/generated-gradle-jars/*.jar"],
             ["wrapper-zips", "wrapper/dists/*/*/*.zip"],
-            ["dependency-jars", "caches/modules-*/files-*/**/*.jar"],
-            ["instrumented-jars", "caches/jars-*/*"]
+            ["dependency-jars", "caches/modules-*/files-*/**/*.jar"]
           ]
 
   restore-build:
