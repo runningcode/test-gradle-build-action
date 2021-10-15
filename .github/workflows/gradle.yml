@@ -14,12 +14,7 @@ jobs:
     - uses: gradle/gradle-build-action@e11cdbdcfcf8d7e9416203728f4b02b4d11ff349
       with:
         build-root-directory: gradle-project
-        arguments: build --build-cache
-        cache-artifact-bundles: |
-          [
-            ['generated-gradle-jars', 'caches/*/generated-gradle-jars/*.jar'],
-            ['dependency-jars', 'caches/modules-*/files-*/**/*.jar'],
-            ['instrumented-jars', 'caches/jars-*/*/*.jar']
-          ]
+        arguments: help
+        cache-artifact-bundles: "[['generated-gradle-jars', 'caches/*/generated-gradle-jars/*.jar']]"
 
 
