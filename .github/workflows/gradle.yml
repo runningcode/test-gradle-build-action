@@ -10,11 +10,10 @@ jobs:
       with:
         distribution: 'adopt'
         java-version: 11
-    - uses: gradle/gradle-build-action@v2
+    - uses: gradle/gradle-build-action@e11cdbdcfcf8d7e9416203728f4b02b4d11ff349
       with:
         build-root-directory: gradle-project
         arguments: build --build-cache
-        cache-debugging-enabled: true
         
   read-only:
     needs: gradle
@@ -25,10 +24,9 @@ jobs:
       with:
         distribution: 'adopt'
         java-version: 11
-    - uses: gradle/gradle-build-action@v2
+    - uses: gradle/gradle-build-action@e11cdbdcfcf8d7e9416203728f4b02b4d11ff349
       with:
         build-root-directory: gradle-project
         arguments: build --build-cache
-        cache-debugging-enabled: true
 
 
