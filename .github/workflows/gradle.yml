@@ -15,6 +15,13 @@ jobs:
       with:
         build-root-directory: gradle-project
         arguments: help
+        cache-artifact-bundles: |
+          [
+            ["generated-gradle-jars", "caches/*/generated-gradle-jars/*.jar"],
+            ["wrapper-zips", "wrapper/dists/*/*/*.zip"],
+            ["dependency-jars", "caches/modules-*/files-*/**/*.jar"],
+            ["instrumented-jars", "caches/jars-*/*/*.jar"]
+          ]
 
   restore-build:
     needs: seed-build
