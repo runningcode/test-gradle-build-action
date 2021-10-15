@@ -19,8 +19,7 @@ jobs:
           [
             ["generated-gradle-jars", "caches/*/generated-gradle-jars/*.jar"],
             ["wrapper-zips", "wrapper/dists/*/*/*.zip"],
-            ["dependency-jars", "caches/modules-*/files-*/**/*.jar"],
-            ["instrumented-jars", "caches/jars-*/*/*.jar"]
+            ["dependency-jars", "caches/modules-*/files-*/**/*.jar"]
           ]
 
   restore-build:
