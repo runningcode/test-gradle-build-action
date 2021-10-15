@@ -3,7 +3,7 @@ on:
   push:
   workflow_dispatch:
 jobs:
-  gradle:
+  seed-build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -11,13 +11,25 @@ jobs:
       with:
         distribution: 'adopt'
         java-version: 11
-    - uses: gradle/gradle-build-action@e11cdbdcfcf8d7e9416203728f4b02b4d11ff349
+    - uses: gradle/gradle-build-action@8b1f1a38171b6ec35c8c7d536edcde9debb5194a
       with:
         build-root-directory: gradle-project
         arguments: help
-        cache-artifact-bundles: |
-           [
-             ["generated-gradle-jars", "caches/*/generated-gradle-jars/*.jar"]
-           ]
+
+  restore-build:
+    needs: seed-build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-java@v2
+      with:
+        distribution: 'adopt'
+        java-version: 11
+    - uses: gradle/gradle-build-action@8b1f1a38171b6ec35c8c7d536edcde9debb5194a
+      with:
+        build-root-directory: gradle-project
+        arguments: help
+        cache-artifact-bundles: '[]'
+        cache-read-only: true
 
 
