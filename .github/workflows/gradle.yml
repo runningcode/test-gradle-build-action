@@ -2,6 +2,10 @@ name: main
 on:
   push:
   workflow_dispatch:
+
+env:
+  CACHE_DEBUG_ENABLED: true
+
 jobs:
   seed-build:
     runs-on: ubuntu-latest
