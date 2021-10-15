@@ -15,8 +15,9 @@ jobs:
       with:
         build-root-directory: gradle-project
         arguments: help
-        cache-artifact-bundles: ${{ toJSON([
-            ['generated-gradle-jars', 'caches/*/generated-gradle-jars/*.jar']
-          ]) }}
+        cache-artifact-bundles: |
+          '[
+             ["generated-gradle-jars", "caches/*/generated-gradle-jars/*.jar"]
+           ]'
 
 
