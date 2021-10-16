@@ -1,4 +1,4 @@
-# Change to workflow
+# Change to workflow.
 name: main
 on:
   push:
