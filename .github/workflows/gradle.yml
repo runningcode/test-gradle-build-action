@@ -24,4 +24,6 @@ jobs:
       with:
         build-root-directory: gradle-project
         cache-read-only: ${{ github.ref != 'refs/heads/main' }}
-        arguments: check
+        arguments: |
+          check
+          --build-cache
