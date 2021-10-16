@@ -23,6 +23,14 @@ jobs:
     - uses: gradle/gradle-build-action@v2
       with:
         build-root-directory: gradle-project
+        cache-artifact-bundles: |
+          [
+            ["generated-gradle-jars", "caches/*/generated-gradle-jars/*.jar"],
+            ["wrapper-zips", "wrapper/dists/*/*/*.zip"],
+            ["dependency-jars", "caches/modules-*/files-*/**/*.jar"],
+            ["instrumented-jars", "caches/jars-*/*/"]
+          ]
+
         cache-read-only: ${{ github.ref != 'refs/heads/main' }}
         arguments: |
           check
