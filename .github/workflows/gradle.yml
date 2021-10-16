@@ -20,7 +20,7 @@ jobs:
       with:
         distribution: 'adopt'
         java-version: 11
-    - uses: gradle/gradle-build-action@8b1f1a38171b6ec35c8c7d536edcde9debb5194a
+    - uses: gradle/gradle-build-action@v2
       with:
         build-root-directory: gradle-project
         cache-read-only: ${{ github.ref != 'refs/heads/main' }}
