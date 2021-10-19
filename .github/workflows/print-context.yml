@@ -12,6 +12,8 @@ jobs:
       - name: Dump job id and name
         run: echo "$GITHUB_JOB - $GITHUB_EVENT_PATH"
       - name: print env
+        env:
+          DUMMY_SECRET:  ${{ secrets.DUMMY_SECRET }}
         run: env
       - name: Read EVENT_PATH
         run: cat $GITHUB_EVENT_PATH
