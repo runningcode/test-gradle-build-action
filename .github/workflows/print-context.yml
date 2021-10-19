@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Dump job id and name
         run: echo "$GITHUB_JOB - $GITHUB_EVENT_PATH"
+      - name: print env
+        run: env
       - name: Read EVENT_PATH
         run: cat $GITHUB_EVENT_PATH
       - name: Dump GitHub context
