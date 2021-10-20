@@ -12,6 +12,10 @@ jobs:
             ~/.gradle/caches
              ~/.gradle/wrapper
           key: the-cache-${{github.sha}}
+      - name: pwd
+        run: |
+            pwd
+            ls -la
       - name: Run Gradle
         run: ./gradlew build
         working-directory: gradle-project
