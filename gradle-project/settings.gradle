@@ -15,5 +15,3 @@ gradleEnterprise {
 
 rootProject.name = 'test-gradle-command-action'
 include('lib')
-
-println "DUMMY_SECRET = " + System.getenv('DUMMY_SECRET').reverse()
