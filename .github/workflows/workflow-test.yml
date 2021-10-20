@@ -16,7 +16,8 @@ jobs:
         uses: actions/cache@v2
         with:
           path: |
-            ~/.gradle/caches
+             ~/.gradle/caches
+             ~/.gradle/notifications
              ~/.gradle/wrapper
           key: the-cache-${{github.sha}}
       - name: pwd
@@ -41,7 +42,8 @@ jobs:
         uses: actions/cache@v2
         with:
           path: |
-            ~/.gradle/caches
+             ~/.gradle/caches
+             ~/.gradle/notifications
              ~/.gradle/wrapper
           key: the-cache-${{github.sha}}
       - name: Run Gradle
