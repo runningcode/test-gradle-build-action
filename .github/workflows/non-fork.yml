@@ -14,7 +14,7 @@ jobs:
         run: echo "$GITHUB_CONTEXT"
 
   non-fork-job:
-    if: ${{!github.event.repository.fork}}
+    if: ${{ !github.event.repository.fork }}
     runs-on: ubuntu-latest
     steps:
       - name: Add a notice on main
@@ -22,14 +22,14 @@ jobs:
 
   post-non-fork-job:
     needs: [non-fork-job]
-    if: success() || failure()
+    if: ${{ !github.event.repository.fork && always() }}
     runs-on: ubuntu-latest
     steps:
       - name: Add a notice on post-non-fork
         run: echo "::notice ::Finished doing stuff on main repo"
 
   fork-job:
-    if: ${{github.event.repository.fork}}
+    if: ${{ github.event.repository.fork }}
     runs-on: ubuntu-latest
     steps:
       - name: Add a notice on fork
@@ -37,7 +37,7 @@ jobs:
 
   post-fork-job:
     needs: [fork-job]
-    if: success() || failure()
+    if: ${{ github.event.repository.fork && always() }}
     runs-on: ubuntu-latest
     steps:
       - name: Add a notice on post-fork
