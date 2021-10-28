@@ -9,17 +9,16 @@ env:
 
 jobs:
   non-fork-job:
+    if: ${{ env.SECRET_PRESENT }}
     runs-on: ubuntu-latest
     steps:
       - name: Add a notice on main
-        if: ${{ env.SECRET_PRESENT }}
         run: echo "::notice ::Build running in main repo"
 
   post-non-fork-job:
     needs: [non-fork-job]
-    if: always()
+    if: ${{ env.SECRET_PRESENT && always() }}
     runs-on: ubuntu-latest
     steps:
       - name: Add a notice on post-non-fork
-        if: ${{ env.SECRET_PRESENT }}
         run: echo "::notice ::Finished doing stuff on main repo"
