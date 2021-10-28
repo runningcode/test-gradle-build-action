@@ -43,10 +43,14 @@ jobs:
   non-fork-job:
     runs-on: ubuntu-latest
     steps:
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CONTEXT"
       - name: Add a notice on main
-        if: ${{ secrets.REPO_SECRET }}
-        run: echo "::notice ::Doing stuff with secret"
+        if: ${{ github.event }}
+        run: echo "::notice ::Doing stuff on main repo"
       - name: Add a notice on fork
-        if: ${{ !secrets.REPO_SECRET }}
-        run: echo "::notice ::Doing stuff on FORK without secret"
+        if: ${{ !github.event }}
+        run: echo "::notice ::Doing stuff on FORK"
 
