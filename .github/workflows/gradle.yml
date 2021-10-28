@@ -42,7 +42,7 @@ jobs:
           check
           --build-cache
   non-fork-job:
-    if: secrets.REPO_SECRET
+    if: ${{ secrets.REPO_SECRET }}
     runs-on: ubuntu-latest
     steps:
       - name: Add a notice
