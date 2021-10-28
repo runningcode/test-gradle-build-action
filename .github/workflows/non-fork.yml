@@ -20,6 +20,14 @@ jobs:
       - name: Add a notice on main
         run: echo "::notice ::Build running in main repo"
 
+  post-non-fork-job:
+    needs: [non-fork-job]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add a notice on post-non-fork
+        run: echo "::notice ::Finished doing stuff on main repo"
+
   fork-job:
     if: ${{github.event.repository.fork}}
     runs-on: ubuntu-latest
@@ -29,6 +37,7 @@ jobs:
 
   post-fork-job:
     needs: [fork-job]
+    if: always()
     runs-on: ubuntu-latest
     steps:
       - name: Add a notice on post-fork
