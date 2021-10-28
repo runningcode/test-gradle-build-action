@@ -5,7 +5,7 @@ on:
   pull_request:
 
 env:
-   SECRET_PRESENT: ${{ secrets.DUMMY_SECRET }}
+   SECRET_PRESENT: ${{ secrets.DUMMY_SECRET_2 }}
 
 jobs:
   non-fork-job:
