@@ -17,6 +17,8 @@ jobs:
       with:
         distribution: 'adopt'
         java-version: 11
+    - name: read file contents directly
+      run: cat README.md
     - name: read file contents to output
       id: read-file
       run: echo ::set-output name=contents::$(cat README.md)
