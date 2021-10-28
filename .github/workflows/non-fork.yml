@@ -26,3 +26,10 @@ jobs:
     steps:
       - name: Add a notice on fork
         run: echo "::notice ::Doing stuff on FORKED repo"
+
+  post-fork-job:
+    needs: [fork-job]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add a notice on post-fork
+        run: echo "::notice ::Finished doing stuff on FORKED repo"
