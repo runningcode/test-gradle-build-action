@@ -13,7 +13,6 @@ on:
 env:
   CACHE_DEBUG_ENABLED: true
 
-
 jobs:
   seed-build:
     runs-on: ubuntu-latest
@@ -42,9 +41,12 @@ jobs:
           check
           --build-cache
   non-fork-job:
-    if: ${{ secrets.REPO_SECRET }}
     runs-on: ubuntu-latest
     steps:
-      - name: Add a notice
+      - name: Add a notice on main
+        if: ${{ secrets.REPO_SECRET }}
         run: echo "::notice ::Doing stuff with secret"
+      - name: Add a notice on fork
+        if: ${{ !secrets.REPO_SECRET }}
+        run: echo "::notice ::Doing stuff on FORK without secret"
 
