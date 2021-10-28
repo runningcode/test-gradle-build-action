@@ -21,7 +21,7 @@ jobs:
         run: echo "::notice ::Doing stuff on main repo"
 
   fork-job:
-    if: ${{!github.event_name == 'pull_request'}}
+    if: ${{github.event_name == 'pull_request'}}
     runs-on: ubuntu-latest
     steps:
       - name: Add a notice on fork
