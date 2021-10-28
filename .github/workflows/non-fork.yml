@@ -22,7 +22,7 @@ jobs:
 
   post-non-fork-job:
     needs: [non-fork-job]
-    if: success() || failure() || cancelled()
+    if: success() || failure()
     runs-on: ubuntu-latest
     steps:
       - name: Add a notice on post-non-fork
@@ -37,7 +37,7 @@ jobs:
 
   post-fork-job:
     needs: [fork-job]
-    if: success() || failure() || cancelled()
+    if: success() || failure()
     runs-on: ubuntu-latest
     steps:
       - name: Add a notice on post-fork
