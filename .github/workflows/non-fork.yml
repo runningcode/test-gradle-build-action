@@ -1,0 +1,28 @@
+# Change to workflow.
+name: non-fork
+on:
+  push:
+  pull_request:
+
+jobs:
+  print-context:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CONTEXT"
+
+  non-fork-job:
+    if: ${{github.event}}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add a notice on main
+        run: echo "::notice ::Doing stuff on main repo"
+
+  fork-job:
+    if: ${{!github.event}}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add a notice on fork
+        run: echo "::notice ::Doing stuff on FORK"
