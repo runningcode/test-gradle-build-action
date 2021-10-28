@@ -5,14 +5,6 @@ on:
   pull_request:
 
 jobs:
-  print-context:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJSON(github) }}
-        run: echo "$GITHUB_CONTEXT"
-
   non-fork-job:
     if: ${{ !github.event.repository.fork }}
     runs-on: ubuntu-latest
@@ -27,18 +19,3 @@ jobs:
     steps:
       - name: Add a notice on post-non-fork
         run: echo "::notice ::Finished doing stuff on main repo"
-
-  fork-job:
-    if: ${{ github.event.repository.fork }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Add a notice on fork
-        run: echo "::notice ::Doing stuff on FORKED repo"
-
-  post-fork-job:
-    needs: [fork-job]
-    if: ${{ github.event.repository.fork && always() }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Add a notice on post-fork
-        run: echo "::notice ::Finished doing stuff on FORKED repo"
