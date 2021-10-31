@@ -1,0 +1,12 @@
+# Change to workflow..
+name: post-gradlee
+on:
+  workflow_run:
+    workflows: ["main"]
+    types: [completed]
+
+jobs:
+  report-jobs:
+    runs-on: ubuntu-latest
+    steps:
+    - run: echo 'Running here'
