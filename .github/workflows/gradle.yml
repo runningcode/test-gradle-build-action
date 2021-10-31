@@ -22,6 +22,18 @@ jobs:
       with:
         distribution: 'adopt'
         java-version: 11
+    - uses: octokit/request-action@v2.x
+      id: create_check_run
+      with:
+        route: POST /repos/${{github.repository}}/check-runs
+        head_sha: ${{ github.sha }}
+        name: "Test check run"
+        output: | # The | is significant!
+          title: Test check run title
+          summary: A summary of the test check run
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
     - name: run gradle
       uses: gradle/gradle-build-action@releases/v2
       with:
@@ -30,4 +42,13 @@ jobs:
         arguments: |
           check
           --build-cache
-  
+
+    # Update check run to completed, successful status
+    - uses: octokit/request-action@v2.x
+      with:
+        route: PATCH /repos/${{github.repository}}/check-runs/{check_run_id}
+        check_run_id: ${{ fromJson(steps.create_check_run.outputs.data).id }}
+        conclusion: "success"
+        status: "completed"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
