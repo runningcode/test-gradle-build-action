@@ -1,5 +1,5 @@
 # Change to workflow..
-name: post-gradlee
+name: post-gradle
 on:
   workflow_run:
     workflows: ["main"]
@@ -9,4 +9,4 @@ jobs:
   report-jobs:
     runs-on: ubuntu-latest
     steps:
-    - run: echo 'Running here'
+    - run: echo ${{ toJSON(github.event) }}
