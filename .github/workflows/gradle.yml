@@ -12,6 +12,7 @@ on:
 #Bump
 env:
   CACHE_DEBUG_ENABLED: true
+  GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
 jobs:
   seed-build:
