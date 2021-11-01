@@ -10,3 +10,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: echo "${{ toJSON(github.event) }}"
+    # Create check run
+    - uses: octokit/request-action@v2.x
+      id: create_check_run
+      env:
+        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      with:
+        route: POST /repos/${{github.repository}}/check-runs
+        head_sha: ${{ github.sha }}
+        name: "Test check run"
+        output: | # The | is significant!
+          title: Test check run title
+          summary: A summary of the test check run
