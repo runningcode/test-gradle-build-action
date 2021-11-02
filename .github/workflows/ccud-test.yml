@@ -22,10 +22,54 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
           
-      - name: build
+      - name: gradle help
         uses: gradle/gradle-build-action@v2
         with: 
           arguments: help
+          build-root-directory: gradle-project
+        env:
+          GRADLE_ENTERPRISE_ACCESS_KEY: e.grdev.net=${{secrets.GRADLE_ENTERPRISE_ACCESS_KEY}}
+          
+      - name: gradle assemble
+        uses: gradle/gradle-build-action@v2
+        with: 
+          arguments: assemble
+          build-root-directory: gradle-project
+        env:
+          GRADLE_ENTERPRISE_ACCESS_KEY: e.grdev.net=${{secrets.GRADLE_ENTERPRISE_ACCESS_KEY}}
+
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Checkout CCUD
+        uses: actions/checkout@v2
+        with:
+          repository: gradle/gradle-enterprise-build-config-samples
+          path: gradle-enterprise-build-config-samples
+          ref: dd/github-actions-links
+          
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+          
+      - name: gradle check
+        uses: gradle/gradle-build-action@v2
+        with: 
+          arguments: check
+          build-root-directory: gradle-project
+        env:
+          GRADLE_ENTERPRISE_ACCESS_KEY: e.grdev.net=${{secrets.GRADLE_ENTERPRISE_ACCESS_KEY}}
+          
+      - name: gradle build
+        uses: gradle/gradle-build-action@v2
+        with: 
+          arguments: build
           build-root-directory: gradle-project
         env:
           GRADLE_ENTERPRISE_ACCESS_KEY: e.grdev.net=${{secrets.GRADLE_ENTERPRISE_ACCESS_KEY}}
