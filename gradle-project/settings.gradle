@@ -1,5 +1,5 @@
 pluginManagement {
-    //includeBuild '../gradle-enterprise-build-config-samples/common-custom-user-data-gradle-plugin'
+    includeBuild '../gradle-enterprise-build-config-samples/common-custom-user-data-gradle-plugin'
 }
 plugins {
     id 'com.gradle.enterprise' version '3.7.1'
