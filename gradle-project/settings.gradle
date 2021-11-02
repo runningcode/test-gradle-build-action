@@ -1,3 +1,6 @@
+pluginManagement {
+    includeBuild 'gradle-enterprise-build-config-samples/common-custom-user-data-gradle-plugin'
+}
 plugins {
     id 'com.gradle.enterprise' version '3.6.2'
     id 'com.gradle.common-custom-user-data-gradle-plugin' version '1.4'
