@@ -8,11 +8,10 @@ plugins {
 // Just a comment.
 
 gradleEnterprise {
+    server = "https://e.grdev.net"
     buildScan {
-        publishAlways()
+        publishIfAuthenticated()
         captureTaskInputFiles = true
-        termsOfServiceUrl = "https://gradle.com/terms-of-service"
-        termsOfServiceAgree = "yes"
     }
 }
 
