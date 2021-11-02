@@ -25,7 +25,7 @@ jobs:
       - name: build
         uses: gradle/gradle-build-action@v2
         with: 
-          arguments: build
+          arguments: help
           build-root-directory: gradle-project
         env:
           GRADLE_ENTERPRISE_ACCESS_KEY: e.grdev.net=${{secrets.GRADLE_ENTERPRISE_ACCESS_KEY}}
