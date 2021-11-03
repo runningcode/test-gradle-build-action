@@ -1,5 +1,5 @@
 #Comment
-name: CCUD test
+name: PR test
 
 on: [push,pull_request]
 
