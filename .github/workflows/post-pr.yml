@@ -43,22 +43,18 @@ jobs:
       - run: mkdir .gradle && mkdir .gradle/build-scan-data
       - run: unzip build-scan-data.zip -d .gradle/build-scan-data
 
-      # - uses: actions/download-artifact@v2
-      #   with:
-      #     path: ~/.gradle
+      - name: gradle publish scan
+        uses: gradle/gradle-build-action@v2
+        with: 
+          arguments: buildScanPublishPrevious
+          build-root-directory: gradle-project
+        env:
+          GRADLE_ENTERPRISE_ACCESS_KEY: ${{secrets.GRADLE_ENTERPRISE_ACCESS_KEY}}
 
-      # - name: gradle publish scan
-      #   uses: gradle/gradle-build-action@v2
-      #   with: 
-      #     arguments: buildScanPublishPrevious
-      #     build-root-directory: gradle-project
-      #   env:
-      #     GRADLE_ENTERPRISE_ACCESS_KEY: ${{secrets.GRADLE_ENTERPRISE_ACCESS_KEY}}
-
-      # - name: gradle publish another scan
-      #   uses: gradle/gradle-build-action@v2
-      #   with: 
-      #     arguments: buildScanPublishPrevious
-      #     build-root-directory: gradle-project
-      #   env:
-      #     GRADLE_ENTERPRISE_ACCESS_KEY: ${{secrets.GRADLE_ENTERPRISE_ACCESS_KEY}}
+      - name: gradle publish another scan
+        uses: gradle/gradle-build-action@v2
+        with: 
+          arguments: buildScanPublishPrevious
+          build-root-directory: gradle-project
+        env:
+          GRADLE_ENTERPRISE_ACCESS_KEY: ${{secrets.GRADLE_ENTERPRISE_ACCESS_KEY}}
