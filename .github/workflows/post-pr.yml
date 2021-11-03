@@ -28,7 +28,40 @@ jobs:
                repo: context.repo.repo,
                run_id: ${{github.event.workflow_run.id }},
             });
-            for (var artifact of artifacts) {
+            for (var artifact of artifacts.data.artifacts) {
               console.log("Artifact: " + artifact.name)
             }
+            
+      # var matchArtifact = artifacts.data.artifacts.filter((artifact) => {
+      #   return artifact.name == "pr"
+      # })[0];
+      # var download = await github.actions.downloadArtifact({
+      #     owner: context.repo.owner,
+      #     repo: context.repo.repo,
+      #     artifact_id: matchArtifact.id,
+      #     archive_format: 'zip',
+      # });
+      # var fs = require('fs');
+      # fs.writeFileSync('${{github.workspace}}/pr.zip', Buffer.from(download.data));
 
+      # - run: unzip pr.zip
+
+      # - uses: actions/download-artifact@v2
+      #   with:
+      #     path: ~/.gradle
+
+      # - name: gradle publish scan
+      #   uses: gradle/gradle-build-action@v2
+      #   with: 
+      #     arguments: buildScanPublishPrevious
+      #     build-root-directory: gradle-project
+      #   env:
+      #     GRADLE_ENTERPRISE_ACCESS_KEY: ${{secrets.GRADLE_ENTERPRISE_ACCESS_KEY}}
+
+      # - name: gradle publish another scan
+      #   uses: gradle/gradle-build-action@v2
+      #   with: 
+      #     arguments: buildScanPublishPrevious
+      #     build-root-directory: gradle-project
+      #   env:
+      #     GRADLE_ENTERPRISE_ACCESS_KEY: ${{secrets.GRADLE_ENTERPRISE_ACCESS_KEY}}
