@@ -40,7 +40,7 @@ jobs:
             var fs = require('fs');
             fs.writeFileSync('${{github.workspace}}/build-scan-data.zip', Buffer.from(download.data));
 
-      - run: mkdir ${GRADLE_HOME} && mkdir ${GRADLE_HOME}/build-scan-data
+      - run: mkdir ${GRADLE_HOME}/build-scan-data
       - run: unzip build-scan-data.zip -d ${GRADLE_HOME}/build-scan-data
 
       - name: gradle publish scan
