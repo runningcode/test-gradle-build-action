@@ -1,0 +1,24 @@
+name: main
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+env:
+  CACHE_DEBUG_ENABLED: true
+
+jobs:
+  seed-build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: run gradle
+      uses: gradle/gradle-build-action@v2
+      with:
+        build-root-directory: gradle-project
+        cache-read-only: ${{ github.ref != 'refs/heads/main' }}
+        arguments: |
+          check
+          --build-cache
+    
