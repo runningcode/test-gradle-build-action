@@ -13,12 +13,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: run gradle
-      uses: gradle/gradle-build-action@v2
-      with:
-        build-root-directory: gradle-project
-        cache-read-only: ${{ github.ref != 'refs/heads/main' }}
-        arguments: |
-          check
-          --build-cache
+    - name: Setup gradle
+      uses: gradle/gradle-build-action@937999e9cc2425eddc7fd62d1053baf041147db7
+    - name: Run build
+      working-directory: gradle-project
+      run: ./gradlew --build-cache check
     
