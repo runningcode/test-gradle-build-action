@@ -1,3 +1,3 @@
-# test-gradle-command-action
+# test-gradle-build-action
 
-Here's the README
+Project for testing `gradle/gradle-build-action`
