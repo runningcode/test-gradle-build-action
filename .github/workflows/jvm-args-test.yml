@@ -17,3 +17,5 @@ jobs:
         arguments: |
           check
           -Dorg.gradle.parallel=true
+          -Dorg.gradle.jvmargs="-Xmx3g -XX:+HeapDumpOnOutOfMemoryError -XX:MaxMetaspaceSize=256m"
+
