@@ -18,5 +18,5 @@ jobs:
         arguments: |
           check
           -Dorg.gradle.parallel=true
-          -Dorg.gradle.jvmargs="-Xmx3g -Xms512m"
+          -Dorg.gradle.jvmargs=-Xmx3g -Xms512m
 
