@@ -1,0 +1,18 @@
+name: jvmargs test
+on:
+  workflow_dispatch:
+
+env:
+  CACHE_DEBUG_ENABLED: true
+
+jobs:
+  seed-build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Gradle build
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: |
+          check
+          -Dorg.gradle.parallel=true
