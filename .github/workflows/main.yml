@@ -11,8 +11,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Setup gradle
-      uses: gradle/gradle-build-action@937999e9cc2425eddc7fd62d1053baf041147db7
+      uses: gradle/gradle-build-action@v2
     - name: Run build
+      id: gradle
       working-directory: gradle-project
       run: ./gradlew --build-cache check
+    - name: Write summary
+      run: echo '### Hello world! :rocket:' >> $GITHUB_STEP_SUMMARY
+      
     
