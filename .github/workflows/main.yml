@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - name: Write initial summary
+      run: echo '### Hello world!' >> $GITHUB_STEP_SUMMARY
     - name: Setup gradle
       uses: gradle/gradle-build-action@v2
     - name: Run build
@@ -17,6 +19,6 @@ jobs:
       working-directory: gradle-project
       run: ./gradlew --build-cache check
     - name: Write summary
-      run: echo '### Hello world! ${{ steps.gradle.outputs.build-scan-url }}' >> $GITHUB_STEP_SUMMARY
+      run: echo '### ${{ steps.gradle.outputs.build-scan-url }}' >> $GITHUB_STEP_SUMMARY
       
     
