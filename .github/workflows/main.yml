@@ -19,6 +19,8 @@ jobs:
     - name: Write summary
       env:
         BUILD_SCAN_URL: ${{ steps.gradle.outputs.build-scan-url }}
+        GRADLE_ENTERPRISE_ACCESS_KEY: e.grdev.net=${{secrets.GRADLE_ENTERPRISE_ACCESS_KEY}}
+
       run: echo '### Hello world! ${{ steps.gradle.outputs.build-scan-url }}' >> $GITHUB_STEP_SUMMARY
       
     
