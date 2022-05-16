@@ -21,9 +21,11 @@ jobs:
           cache-disabled: true
       - name: Seed config cache
         run: |
+          env
           ./gradlew --configuration-cache build 2>&1 | tee -a /tmp/gradle-build.log
       - name: Load config cache
         run: |
+          env
           ./gradlew --configuration-cache build 2>&1 | tee -a /tmp/gradle-build.log
       - name: Parse outputs
         run: |
