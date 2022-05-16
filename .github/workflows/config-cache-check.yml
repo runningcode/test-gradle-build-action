@@ -3,12 +3,6 @@ name: OrderedProperties
 on:
   workflow_dispatch:
 
-env:
-  GRADLE_ENTERPRISE_URL: "https://ge.solutions-team.gradle.com"
-  GRADLE_ENTERPRISE_ACCESS_KEY: "${{ secrets.GE_SOLUTIONS_ACCESS_TOKEN }}"
-  GIT_REPO: "https://github.com/etiennestuder/java-ordered-properties"
-  TASKS: "build"
-
 jobs:
   configuration-cache-check:
     runs-on: ubuntu-latest
@@ -27,10 +21,10 @@ jobs:
           cache-disabled: true
       - name: Seed config cache
         run: |
-          ./gradlew --configuration-cache --no-scan build 2>&1 | tee -a /tmp/gradle-build.log
+          ./gradlew --configuration-cache build 2>&1 | tee -a /tmp/gradle-build.log
       - name: Load config cache
         run: |
-          ./gradlew --configuration-cache --no-scan build 2>&1 | tee -a /tmp/gradle-build.log
+          ./gradlew --configuration-cache build 2>&1 | tee -a /tmp/gradle-build.log
       - name: Parse outputs
         run: |
           echo ::set-output name=configCacheStored::$(grep "Configuration cache entry stored" /tmp/gradle-build.log | wc -l)
