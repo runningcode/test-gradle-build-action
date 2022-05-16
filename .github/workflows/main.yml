@@ -17,6 +17,8 @@ jobs:
       working-directory: gradle-project
       run: ./gradlew --build-cache check
     - name: Write summary
-      run: echo '### Hello world! :rocket:' >> $GITHUB_STEP_SUMMARY
+      env:
+        BUILD_SCAN_URL: ${{ steps.gradle.outputs.build-scan-url }}
+      run: echo '### Hello world! $BUILD_SCAN_URL' >> $GITHUB_STEP_SUMMARY
       
     
