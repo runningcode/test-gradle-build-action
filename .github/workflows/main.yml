@@ -8,7 +8,6 @@ env:
 jobs:
   seed-build:
     runs-on: ubuntu-latest
-    container: fedora:latest
     steps:
     - uses: actions/checkout@v3
     - uses: actions/setup-java@v3
@@ -16,7 +15,7 @@ jobs:
         distribution: temurin
         java-version: 11
     - name: Setup gradle
-      uses: gradle/gradle-build-action@v2
+      uses: gradle/gradle-build-action@dd/cache-timeout
     - name: Run build
       id: gradle
       working-directory: gradle-project
