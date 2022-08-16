@@ -1,4 +1,4 @@
-name: main
+name: scheduled
 on:
   workflow_dispatch:
   schedule:
