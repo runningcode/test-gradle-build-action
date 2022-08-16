@@ -2,7 +2,7 @@ name: scheduled
 on:
   workflow_dispatch:
   schedule:
-    - cron:  '* * * * *'
+    - cron:  '*/5 * * * *'
 
 env:
   CACHE_DEBUG_ENABLED: true
