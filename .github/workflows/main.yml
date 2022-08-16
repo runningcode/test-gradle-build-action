@@ -19,7 +19,7 @@ jobs:
     - name: Setup gradle
       uses: gradle/gradle-build-action@dd/cache-timeout
       with:
-        cache-read-timeout: 1
+        cache-read-timeout: 5
     - name: Run build
       id: gradle
       working-directory: gradle-project
