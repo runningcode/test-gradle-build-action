@@ -2,7 +2,7 @@ name: scheduled
 on:
   workflow_dispatch:
   schedule:
-    - cron:  "25 * * * *"
+    - cron:  "*/5 * * * *"
 
 env:
   CACHE_DEBUG_ENABLED: true
@@ -17,7 +17,7 @@ jobs:
         distribution: temurin
         java-version: 11
     - name: Setup gradle
-      uses: gradle/gradle-build-action@v2
+      uses: gradle/gradle-build-action@dd/scheduled-workflow
     - name: Run build
       id: gradle
       working-directory: gradle-project
