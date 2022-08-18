@@ -23,7 +23,7 @@ jobs:
       working-directory: gradle-project
       run: ./gradlew help
     - name: Show cache-read-only
-      run: echo "${{ github.event.repository && github.ref_name != github.event.repository.default_branch }}"
+      run: echo "${{ github.event.invalid && github.ref_name != github.event.invalid.default_branch }}"
     - name: Dump job id and name
       run: echo "$GITHUB_JOB - $GITHUB_EVENT_PATH"
     - name: print env
