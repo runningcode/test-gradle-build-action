@@ -5,7 +5,6 @@ on:
 
 env:
   CACHE_DEBUG_ENABLED: true
-  GRADLE_BUILD_ACTION_CACHE_KEY_PREFIX: xxx
 
 jobs:
   seed-build:
@@ -17,9 +16,7 @@ jobs:
         distribution: temurin
         java-version: 11
     - name: Setup gradle
-      uses: gradle/gradle-build-action@dd/cache-timeout
-      with:
-        cache-read-timeout: 5
+      uses: gradle/gradle-build-action@dd/cache-read-timeout
     - name: Run build
       id: gradle
       working-directory: gradle-project
