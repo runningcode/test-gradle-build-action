@@ -5,7 +5,7 @@ on:
 
 env:
   CACHE_DEBUG_ENABLED: true
-  SEGMENT_DOWNLOAD_TIMEOUT_MINS: 1
+  SEGMENT_DOWNLOAD_TIMEOUT_MINS: x
 
 jobs:
   seed-build:
