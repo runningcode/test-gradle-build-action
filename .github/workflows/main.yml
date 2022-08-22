@@ -17,6 +17,8 @@ jobs:
         java-version: 11
     - name: Setup gradle
       uses: gradle/gradle-build-action@dd/cache-read-timeout
+      with:
+        cache-read-timeout: 100
     - name: Run build
       id: gradle
       working-directory: gradle-project
