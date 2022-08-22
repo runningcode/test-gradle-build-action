@@ -5,6 +5,7 @@ on:
 
 env:
   CACHE_DEBUG_ENABLED: true
+  SEGMENT_DOWNLOAD_TIMEOUT_MINS: 1
 
 jobs:
   seed-build:
@@ -17,8 +18,6 @@ jobs:
         java-version: 11
     - name: Setup gradle
       uses: gradle/gradle-build-action@dd/cache-read-timeout
-      with:
-        cache-read-timeout: 100
     - name: Run build
       id: gradle
       working-directory: gradle-project
