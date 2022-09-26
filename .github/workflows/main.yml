@@ -16,8 +16,10 @@ jobs:
         distribution: temurin
         java-version: 11
     - name: Setup gradle
-      uses: gradle/gradle-build-action@dd/cache-read-timeout
+      uses: gradle/gradle-build-action@v2
     - name: Run build
-      id: gradle
+      working-directory: gradle-project
+      run: ./gradlew assemble
+    - name: Run build again
       working-directory: gradle-project
       run: ./gradlew assemble
