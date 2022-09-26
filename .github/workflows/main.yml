@@ -17,9 +17,8 @@ jobs:
         java-version: 11
     - name: Setup gradle
       uses: gradle/gradle-build-action@dd/show-build-results
-    - name: Run build
+    - name: Run build twice
       working-directory: gradle-project
-      run: ./gradlew assemble --configuration-cache
-    - name: Run build again
-      working-directory: gradle-project
-      run: ./gradlew assemble --configuration-cache
+      run: |
+        ./gradlew assemble --configuration-cache
+        ./gradlew assemble --configuration-cache
