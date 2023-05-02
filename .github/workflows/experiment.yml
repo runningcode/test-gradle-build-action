@@ -3,18 +3,15 @@ on:
   workflow_dispatch:
 
 jobs:
-  job1:
-    name: Debug
-    runs-on: windows-latest
+  test-vars:
+    runs-on: ubuntu-latest
 
     steps:
-    - name: Git checkout
-      uses: actions/checkout@v2
-    - name: Setup Gradle
-      uses: gradle/gradle-build-action@v2
-    - name: List files
-      run: ls -la
-    - name: List files with WSL
-      run: wsl ls -la
-    - name: What's home?
-      run: echo $HOME
+    - name: Dump github context
+      run: echo '${{ toJSON(github) }}'
+    - name: Dump vars context
+      run: echo '${{ toJSON(vars) }}'
+    - name: Dump env context
+      run: echo '${{ toJSON(env) }}'
+    - name: Print env on runner
+      run: env
