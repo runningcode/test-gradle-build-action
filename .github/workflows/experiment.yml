@@ -7,8 +7,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Dump github context
-      run: echo '${{ toJSON(github) }}'
+    - name: Dump secrets context
+      run: echo '${{ toJSON(secrets) }}'
     - name: Dump vars context
       run: echo '${{ toJSON(vars) }}'
     - name: Dump env context
