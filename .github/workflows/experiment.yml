@@ -15,3 +15,8 @@ jobs:
       run: echo '${{ toJSON(env) }}'
     - name: Print env on runner
       run: env
+    
+  test-vars-composite-action:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: ./.github/actions/test-composite-action
