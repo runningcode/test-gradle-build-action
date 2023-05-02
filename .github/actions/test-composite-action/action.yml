@@ -1,13 +1,14 @@
-
 name: 'Test Composite'
 runs:
   using: "composite"
   steps:
-  - name: Dump secrets context
-    run: echo '${{ toJSON(secrets) }}'
-  - name: Dump vars context
-    run: echo '${{ toJSON(vars) }}'
+#   - name: Dump secrets context
+#     run: echo '${{ toJSON(secrets) }}'
+#   - name: Dump vars context
+#     run: echo '${{ toJSON(vars) }}'
   - name: Dump env context
     run: echo '${{ toJSON(env) }}'
+    shell: bash
   - name: Print env on runner
     run: env
+    shell: bash
