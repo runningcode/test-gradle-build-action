@@ -19,10 +19,6 @@ jobs:
       uses: gradle/gradle-build-action@dd/dependency-graph
       with:
          upload-dependency-graph: true
-    - name: Run build
-      working-directory: gradle-project
-      run: |
-        ./gradlew -I /home/runner/work/_actions/gradle/gradle-build-action/dd/dependency-graph/src/resources/dependency-extractor/dependency-extractor.init.gradle :dependencyExtractor_resolveAllDependencies
     - name: Upload dependency graph
       working-directory: gradle-project
       run: |
