@@ -18,6 +18,7 @@ jobs:
     - name: Setup gradle
       uses: gradle/gradle-build-action@dd/dependency-graph
       with:
+         build-root-directory: gradle-project
          upload-dependency-graph: true
     - name: Upload dependency graph
       working-directory: gradle-project
