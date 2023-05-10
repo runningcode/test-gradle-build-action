@@ -25,8 +25,13 @@ jobs:
       with:
         script: |
           const fs = require('fs')
-          const jsonContent = fs.readFileSync('gradle-project/build/reports/github-dependency-report/github-dependency-manifest.json', 'utf8')
-          core.warning(`GOT JSON CONTENT: ${jsonContent}`)
+          const path = require('path')
+          
+          const jsonFile = path.resolve('gradle-project/build/reports/github-dependency-report/github-dependency-manifest.json')
+          core.warning(`READING JSON from file: ${jsonFile}`)
+          
+          const jsonContent = fs.readFileSync(jsonFile, 'utf8')
+          core.warning(`READ JSON CONTENT: ${jsonContent}`)
           
           //const jsonObject = JSON.parse(jsonContent)
 
