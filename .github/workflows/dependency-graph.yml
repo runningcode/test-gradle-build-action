@@ -24,6 +24,13 @@ jobs:
       uses: actions/github-script@v6
       with:
         script: |
+          import fs from 'fs'
+
+          const jsonContent = fs.readFileSync('gradle-project/build/reports/github-dependency-report/github-dependency-manifest.json', 'utf8')
+          core.warning(`GOT JSON CONTENT: ${jsonContent}`)
+          
+          //const jsonObject = JSON.parse(jsonContent)
+
           await github.request('POST /repos/bigdaz/test-gradle-build-action/dependency-graph/snapshots', {
             version: 0,
             sha: '${{ github.sha }}',
