@@ -37,7 +37,7 @@ jobs:
               version: '0.0.1',
               url: 'https://github.com/octo-org/octo-repo'
             },
-            scanned: '2023-05-10T20:25:01Z',
+            scanned: '2023-05-10T20:25:02Z',
             manifests: {
               'package-lock.json': {
                 name: 'package-lock.json',
@@ -58,7 +58,7 @@ jobs:
                     ]
                   },
                   tunnel: {
-                    package_url: 'pkg:/npm/tunnel@0.0.7'
+                    package_url: 'pkg:/npm/tunnel@0.0.8'
                   }
                 }
               }
