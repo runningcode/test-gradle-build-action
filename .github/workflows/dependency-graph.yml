@@ -24,12 +24,10 @@ jobs:
       uses: actions/github-script@v6
       with:
         script: |
-          await github.request('POST /repos/{owner}/{repo}/dependency-graph/snapshots', {
-            owner: '${{ github.repository_owner }}',
-            repo: 'test-gradle-build-action',
+          await github.request('POST /repos/bigdaz/test-gradle-build-action/dependency-graph/snapshots', {
             version: 0,
             sha: '${{ github.sha }}',
-            ref: 'refs/heads/main',
+            ref: '${{ github.ref }}',
             job: {
               correlator: '${{ github.workflow }}',
               id: '${{ github.run_id }}'
