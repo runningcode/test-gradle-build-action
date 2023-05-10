@@ -2,6 +2,7 @@
 name: dependency-graph
 on:
   workflow_dispatch:
+  push:
 
 env:
   CACHE_DEBUG_ENABLED: true
@@ -19,9 +20,14 @@ jobs:
       uses: gradle/gradle-build-action@dd/dependency-graph
       with:
          build-root-directory: gradle-project
+    - name: Script upload
+      uses: actions/github-script@v6
+      with:
+        script: |
+          github.request("GET /")
+
     - name: Upload dependency graph
-      working-directory: gradle-project
       run: |
-        curl -L -X POST -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${{ github.token }}" -H "X-GitHub-Api-Version: 2022-11-28" https://api.github.com/repos/bigdaz/test-gradle-build-action/dependency-graph/snapshots -d @build/reports/github-dependency-report/github-dependency-manifest.json
+        curl -L -X POST -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${{ github.token }}" -H "X-GitHub-Api-Version: 2022-11-28" https://api.github.com/repos/bigdaz/test-gradle-build-action/dependency-graph/snapshots -d @gradle-project/build/reports/github-dependency-report/github-dependency-manifest.json
 
 
