@@ -20,6 +20,7 @@ jobs:
       uses: gradle/gradle-build-action@dd/dependency-graph
       with:
          build-root-directory: gradle-project
+         upload-dependency-graph: true
     - name: Script upload
       uses: actions/github-script@v6
       with:
