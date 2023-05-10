@@ -24,10 +24,54 @@ jobs:
       uses: actions/github-script@v6
       with:
         script: |
-          github.request("GET /")
+          await octokit.request('POST /repos/{owner}/{repo}/dependency-graph/snapshots', {
+            owner: 'bigdaz',
+            repo: 'test-gradle-build-action',
+            version: 0,
+            sha: 'f6b8aaf35beaa41ab2f060dd34d427320d924d3b',
+            ref: 'refs/heads/main',
+            job: {
+              correlator: 'CORRELATOR',
+              id: '1'
+            },
+            detector: {
+              name: 'octo-detector',
+              version: '0.0.1',
+              url: 'https://github.com/octo-org/octo-repo'
+            },
+            scanned: '2023-05-10T20:25:00Z',
+            manifests: {
+              'package-lock.json': {
+                name: 'package-lock.json',
+                file: {
+                  source_location: 'src/package-lock.json'
+                },
+                resolved: {
+                  '@actions/core': {
+                    package_url: 'pkg:/npm/%40actions/core@1.1.9',
+                    dependencies: [
+                      '@actions/http-client'
+                    ]
+                  },
+                  '@actions/http-client': {
+                    package_url: 'pkg:/npm/%40actions/http-client@1.0.7',
+                    dependencies: [
+                      'tunnel'
+                    ]
+                  },
+                  tunnel: {
+                    package_url: 'pkg:/npm/tunnel@0.0.6'
+                  }
+                }
+              }
+            },
+            headers: {
+              'X-GitHub-Api-Version': '2022-11-28'
+            }
+          })          
 
-    - name: Upload dependency graph
-      run: |
-        curl -L -X POST -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${{ github.token }}" -H "X-GitHub-Api-Version: 2022-11-28" https://api.github.com/repos/bigdaz/test-gradle-build-action/dependency-graph/snapshots -d @gradle-project/build/reports/github-dependency-report/github-dependency-manifest.json
+#     - name: Upload dependency graph
+#       run: |
+#         curl -L -X POST -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${{ github.token }}" -H "X-GitHub-Api-Version: 2022-11-28" https://api.github.com/repos/bigdaz/test-gradle-build-action/dependency-graph/snapshots -d @gradle-project/build/reports/github-dependency-report/github-dependency-manifest.json
 
 
