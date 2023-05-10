@@ -34,51 +34,9 @@ jobs:
           const jsonContent = fs.readFileSync(jsonFile, 'utf8')
           core.warning(`READ JSON CONTENT: ${jsonContent}`)
           
-          //const jsonObject = JSON.parse(jsonContent)
+          const jsonObject = JSON.parse(jsonContent)
 
-          await github.request('POST /repos/bigdaz/test-gradle-build-action/dependency-graph/snapshots', {
-            version: 0,
-            sha: '${{ github.sha }}',
-            ref: '${{ github.ref }}',
-            job: {
-              correlator: '${{ github.workflow }}',
-              id: '${{ github.run_id }}'
-            },
-            detector: {
-              name: 'octo-detector',
-              version: '0.0.1',
-              url: 'https://github.com/octo-org/octo-repo'
-            },
-            scanned: '2023-05-10T20:25:02Z',
-            manifests: {
-              'package-lock.json': {
-                name: 'package-lock.json',
-                file: {
-                  source_location: 'src/package-lock.json'
-                },
-                resolved: {
-                  '@actions/core': {
-                    package_url: 'pkg:/npm/%40actions/core@1.1.9',
-                    dependencies: [
-                      '@actions/http-client'
-                    ]
-                  },
-                  '@actions/http-client': {
-                    package_url: 'pkg:/npm/%40actions/http-client@1.0.7',
-                    dependencies: [
-                      'tunnel'
-                    ]
-                  },
-                  tunnel: {
-                    package_url: 'pkg:/npm/tunnel@0.0.8'
-                  }
-                }
-              }
-            },
-            headers: {
-              'X-GitHub-Api-Version': '2022-11-28'
-            }
-          })          
+          await github.request('POST /repos/bigdaz/test-gradle-build-action/dependency-graph/snapshots', jsonObject)          
 
 #     - name: Upload dependency graph
 #       run: |
