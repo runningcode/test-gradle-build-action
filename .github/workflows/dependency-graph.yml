@@ -25,21 +25,21 @@ jobs:
       with:
         script: |
           await github.request('POST /repos/{owner}/{repo}/dependency-graph/snapshots', {
-            owner: 'bigdaz',
+            owner: '${{ github.repository_owner }}',
             repo: 'test-gradle-build-action',
             version: 0,
-            sha: 'f6b8aaf35beaa41ab2f060dd34d427320d924d3b',
+            sha: '${{ github.sha }}',
             ref: 'refs/heads/main',
             job: {
-              correlator: 'CORRELATOR',
-              id: '1'
+              correlator: '${{ github.workflow }}',
+              id: '${{ github.run_id }}'
             },
             detector: {
               name: 'octo-detector',
               version: '0.0.1',
               url: 'https://github.com/octo-org/octo-repo'
             },
-            scanned: '2023-05-10T20:25:00Z',
+            scanned: '2023-05-10T20:25:01Z',
             manifests: {
               'package-lock.json': {
                 name: 'package-lock.json',
@@ -60,7 +60,7 @@ jobs:
                     ]
                   },
                   tunnel: {
-                    package_url: 'pkg:/npm/tunnel@0.0.6'
+                    package_url: 'pkg:/npm/tunnel@0.0.7'
                   }
                 }
               }
