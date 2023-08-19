@@ -15,5 +15,6 @@ jobs:
       uses: gradle/gradle-build-action@v2
       with:
         gradle-version: ${{ matrix.gradle-version }}
+        build-root-directory: gradle-project
         arguments: -q javaToolchains
     
