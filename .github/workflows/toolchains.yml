@@ -36,7 +36,7 @@ jobs:
         grep -q 'Eclipse Temurin JDK 17' output.txt || (echo "::error::Did not detect preinstalled JDK 17" && exit 1)
         grep -q 'Eclipse Temurin JDK 16' output.txt || (echo "::error::Did not detect setup-java installed JDK 16" && exit 1)
         grep -q 'Eclipse Temurin JDK 20' output.txt || (echo "::error::Did not detect setup-java installed JDK 20" && exit 1)
-        grep -q 'Eclipse Temurin JDK 19' output.txt || (echo "::error::Did not detect JDK 19")
+        grep -q 'Eclipse Temurin JDK 19' output.txt || (echo "::error::Did not detect JDK 19" && exit 1)
         
     - name: Print Maven config
       shell: bash
