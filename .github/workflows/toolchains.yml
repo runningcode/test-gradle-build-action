@@ -27,6 +27,7 @@ jobs:
         gradle-version: ${{ matrix.gradle-version }}
         cache-disabled: true
     - name: Print toolchains
+      shell: bash
       working-directory: gradle-project
       run: gradle -Porg.gradle.java.installations.auto-download=false -q javaToolchains
     - name: Print Maven config
