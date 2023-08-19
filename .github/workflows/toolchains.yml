@@ -29,7 +29,7 @@ jobs:
     - name: Print toolchains
       shell: bash
       working-directory: gradle-project
-      run: gradle -Porg.gradle.java.installations.auto-download=false -q javaToolchains
+      run: gradle -Porg.gradle.java.installations.auto-download=false -Porg.gradle.java.installations.fromEnv=JAVA_HOME_8_X64,JAVA_HOME_11_X64,JAVA_HOME_17_X64 -q javaToolchains
     - name: Print Maven config
       shell: bash
       run: |
