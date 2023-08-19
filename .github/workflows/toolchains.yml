@@ -31,13 +31,12 @@ jobs:
       working-directory: gradle-project
       run: | 
         gradle -Porg.gradle.java.installations.auto-download=false -Porg.gradle.java.installations.fromEnv=JAVA_HOME_8_X64,JAVA_HOME_11_X64,JAVA_HOME_17_X64 -q javaToolchains | tee output.txt
-        grep 'Temurin' output.txt
-        if grep -q 'Temurin' output.txt
-        then
-          echo "FOUND IT"
-        else
-          echo "DID NOT FIND IT"
-        fi
+        grep -q 'Eclipse Temurin JDK 1.8' output.txt || (echo "Did not find preinstalled JDK 1.8" && exit 1)
+        grep -q 'Eclipse Temurin JDK 11' output.txt || (echo "Did not find preinstalled JDK 11" && exit 1)
+        grep -q 'Eclipse Temurin JDK 17' output.txt || (echo "Did not find preinstalled JDK 17" && exit 1)
+        grep -q 'Eclipse Temurin JDK 16' output.txt || (echo "Did not find setup-java installed JDK 16" && exit 1)
+        grep -q 'Eclipse Temurin JDK 20' output.txt || (echo "Did not find setup-java installed JDK 20" && exit 1)
+        grep -q 'Eclipse Temurin JDK 19' output.txt || (echo "Did not find JDK 19" && exit 1)
         
     - name: Print Maven config
       shell: bash
