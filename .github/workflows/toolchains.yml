@@ -30,7 +30,15 @@ jobs:
       shell: bash
       working-directory: gradle-project
       run: | 
-        OUTPUT = $(gradle -Porg.gradle.java.installations.auto-download=false -Porg.gradle.java.installations.fromEnv=JAVA_HOME_8_X64,JAVA_HOME_11_X64,JAVA_HOME_17_X64 -q javaToolchains)
+        gradle -Porg.gradle.java.installations.auto-download=false -Porg.gradle.java.installations.fromEnv=JAVA_HOME_8_X64,JAVA_HOME_11_X64,JAVA_HOME_17_X64 -q javaToolchains | tee output.txt
+        grep 'Temurin' output.txt
+        if grep -q 'Temurin' output.txt
+        then
+          echo "FOUND IT"
+        else
+          echo "DID NOT FIND IT"
+        fi
+        
     - name: Print Maven config
       shell: bash
       run: |
