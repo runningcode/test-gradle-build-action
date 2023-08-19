@@ -28,7 +28,7 @@ jobs:
         cache-disabled: true
     - name: Print toolchains
       working-directory: gradle-project
-      run: gradle -q javaToolchains
+      run: gradle -Porg.gradle.java.installations.auto-download=false -q javaToolchains
     - name: Print Maven config
       shell: bash
       run: |
