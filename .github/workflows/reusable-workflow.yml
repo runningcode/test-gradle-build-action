@@ -1,15 +1,20 @@
-name: reusable_workflow
+name: run-gradle-build
 on: 
   workflow_call:
-    secrets:
-      SECRET_VAR:
-        description: The secret var
+    inputs:
+      gradle-arguments:
+        required: true
+        type: string
+
+env:
+  GRADLE_ENTERPRISE_INJECTION_ENABLED: ${{ vars.GRADLE_ENTERPRISE_INJECTION_ENABLED }}
+  GRADLE_ENTERPRISE_INJECTION_SERVER_URL: ${{ vars.GRADLE_ENTERPRISE_INJECTION_SERVER_URL }}
+  GRADLE_ENTERPRISE_INJECTION_GE_PLUGIN_VERSION: ${{ vars.GRADLE_ENTERPRISE_INJECTION_GE_PLUGIN_VERSION }}
 
 jobs:
-  reusable_workflow_job:
+  run-gradle-build:
     runs-on: ubuntu-latest
     steps:
-    - run: |
-        echo "env.ENV_VAR = $ENV_VAR"
-        echo "vars.CONFIG_VAR = ${{ vars.CONFIG_VAR }}"
-        echo "secrets.SECRET_VAR = ${{ secrets.SECRET_VAR }}"
+    - uses: actions/checkout@v3
+    - uses: gradle/gradle-build-action@main
+    - run: ./gradlew ${{ inputs.config-path }}
