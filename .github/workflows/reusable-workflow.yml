@@ -1,0 +1,12 @@
+name: reusable_workflow
+on: 
+  workflow_call:
+
+jobs:
+  reusable_workflow_job:
+    runs-on: ubuntu-latest
+    steps:
+    - run: |
+        echo "env.ENV_VAR = $ENV_VAR"
+        echo "vars.CONFIG_VAR = ${{ vars.CONFIG_VAR }}"
+        echo "secrets.SECRET_VAR = ${{ secrets.SECRET_VAR }}"
