@@ -1,0 +1,8 @@
+name: reusing_workflow
+
+on:
+  workflow_dispatch:
+
+jobs:
+  reusing_workflow_job:
+    uses: ./.github/workflows/reusable-workflow.yml
