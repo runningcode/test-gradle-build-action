@@ -1,0 +1,10 @@
+name: 'Test Config'
+runs:
+  using: "composite"
+  steps:
+  - name: Print config values
+    run: |
+      echo "env.ENV_VAR = $ENV_VAR"
+      echo "vars.CONFIG_VAR = ${{ vars.CONFIG_VAR }}"
+      echo "secrets.SECRET_VAR = ${{ secrets.SECRET_VAR }}"
+    shell: bash
