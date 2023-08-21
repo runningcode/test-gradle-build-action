@@ -1,6 +1,9 @@
 name: reusable_workflow
 on: 
   workflow_call:
+    secrets:
+      SECRET_VAR:
+        description: The secret var
 
 jobs:
   reusable_workflow_job:
