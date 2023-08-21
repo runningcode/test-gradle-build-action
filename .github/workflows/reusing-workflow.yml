@@ -12,7 +12,7 @@ jobs:
     secrets:
       SECRET_VAR: ${{ secrets.SECRET_VAR }}
   reusing_action_job:
-    runs_on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: "Test the reusable action"
