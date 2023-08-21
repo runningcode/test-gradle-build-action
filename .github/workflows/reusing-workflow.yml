@@ -3,6 +3,9 @@ name: reusing_workflow
 on:
   workflow_dispatch:
 
+env:
+  ENV_VAR: This is the env var
+
 jobs:
   reusing_workflow_job:
     uses: ./.github/workflows/reusable-workflow.yml
