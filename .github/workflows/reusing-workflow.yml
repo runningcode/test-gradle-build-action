@@ -6,3 +6,5 @@ on:
 jobs:
   reusing_workflow_job:
     uses: ./.github/workflows/reusable-workflow.yml
+    secrets:
+      SECRET_VAR: ${{ secrets.SECRET_VAR }}
